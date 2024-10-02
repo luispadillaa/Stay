@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aside Bar con Contenido Dinámico</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    aside {
+      width: 200px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside ul li {
+      margin: 10px 0;
+    }
+
+    aside ul li button {
+      width: 100%;
+      padding: 10px;
+      background-color: #444;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    aside ul li button:hover {
+      background-color: #555;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      background-color: white;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Ocultar todas las secciones por defecto */
+    .seccion {
+      display: none;
+    }
+
+    /* Mostrar solo la sección activa */
+    .seccion.activa {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <ul>
+      <li><button onclick="mostrarSeccion('inicio')">Inicio</button></li>
+      <li><button onclick="mostrarSeccion('servicios')">Servicios</button></li>
+      <li><button onclick="mostrarSeccion('contacto')">Contacto</button></li>
+      <li><button onclick="mostrarSeccion('acerca')">Acerca de</button></li>
+    </ul>
+  </aside>
+
+  <main>
+    <div id="inicio" class="seccion activa">
+      <h2>Inicio</h2>
+      <p>Bienvenido a la página principal. Aquí puede encontrar las últimas noticias y actualizaciones.</p>
+    </div>
+
+    <div id="servicios" class="seccion">
+      <h2>Servicios</h2>
+      <p>Ofrecemos una variedad de servicios que incluyen:</p>
+      <ul>
+        <li>Consultoría</li>
+        <li>Desarrollo de software</li>
+        <li>Capacitación técnica</li>
+      </ul>
+    </div>
+
+    <div id="contacto" class="seccion">
+      <h2>Contacto</h2>
+      <p>Para más información, puedes contactarnos a través del siguiente formulario o llamar a nuestro número de atención al cliente.</p>
+    </div>
+
+    <div id="acerca" class="seccion">
+      <h2>Acerca de</h2>
+      <p>Somos una empresa comprometida con la innovación y la tecnología. Nuestro equipo está formado por profesionales con una amplia experiencia en el sector.</p>
+    </div>
+  </main>
+
+  <script>
+    function mostrarSeccion(seccionId) {
+      // Ocultar todas las secciones
+      const secciones = document.querySelectorAll('.seccion');
+      secciones.forEach(seccion => {
+        seccion.classList.remove('activa');
+      });
+
+      // Mostrar la sección seleccionada
+      const seccionActiva = document.getElementById(seccionId);
+      seccionActiva.classList.add('activa');
+    }
+  </script>
+
+</body>
+</html>

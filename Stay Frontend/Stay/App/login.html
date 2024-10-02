@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="icon" href="/images/logo-circle.png" type="image/x-icon">
+  <link rel="stylesheet" href="/z_Assets/login.css">
+  <!-- Ionicons for Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+<header> 
+  <!-- Navbar and header content here -->
+<nav class="navbar">
+  <div class="logo">
+    <a href="#">Logo</a>
+  </div>
+
+  <button class="menu-toggle" aria-label="Toggle menu">
+    ☰
+  </button>
+
+  <ul class="nav-links">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Servicios</a></li>
+    <li><a href="#">Acerca de</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+
+  <aside class="mobile-menu">
+    <button class="close-menu" aria-label="Close menu">✖</button>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Acerca de</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </aside>
+
+  </nav>
+</header>
+
+<main>
+  <!-- Handling Errors from Spring Security -->
+  <div class="dialog-row">
+    <label th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="text-center redText"></label>
+  </div>
+
+  <div class="box">
+    <div class="inner-box">
+      <div class="forms-wrap">
+
+        <!-- Login Form -->
+        <form action="/req/login" method="post" autocomplete="off" class="sign-in-form">
+          <div class="logo">
+            <img src="/images/Logo Stay.png" alt="easyclass" />
+            <h4>Stay</h4>
+          </div>
+
+          <div class="heading">
+            <h2>Iniciar sesión</h2>
+            <h6>¿Aún no estás registrado?</h6>
+            <a href="#" class="toggle">Registrarse</a>
+          </div>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input name="username" id="username" type="text" minlength="4" class="input-field" autocomplete="off" required />
+              <label for="username">Usuario</label>
+            </div>
+
+            <div class="input-wrap">
+
+              <input name="password" id="password" type="password" minlength="4" class="input-field" autocomplete="off" required />
+              <label for="password">Contraseña</label>
+            </div>
+
+            <input type="submit" value="Iniciar sesión" class="sign-btn" />
+
+            <p class="text">
+              ¿Olvidaste tu contraseña?
+              <a href="#">Obtener ayuda</a> 
+            </p>
+          </div>
+        </form>
+
+        <!-- Signup Form -->
+        <form action="/req/signup" method="post" autocomplete="off" class="sign-up-form">
+          <div class="logo">
+            <img src="/images/Logo Stay.png" alt="easyclass" />
+            <h4>Stay</h4>
+          </div>
+
+          <div class="heading">
+            <h2>Crear cuenta</h2>
+            <h6>¿Ya tienes una cuenta?</h6>
+            <a href="#" class="toggle">Iniciar Sesión</a>
+          </div>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+
+              <input id="username_" name="username" type="text" minlength="4" class="input-field" autocomplete="off" required />
+              <label for="username_">Nombre Completo</label>
+            </div>
+
+            <div class="input-wrap">
+
+              <input id="email_" name="email" type="email" class="input-field" autocomplete="off" required />
+              <label for="email_">Email</label>
+            </div>
+
+            <div class="input-wrap">
+
+              <input id="password_" name="password" type="password" minlength="4" class="input-field" autocomplete="off" required />
+              <label for="password_">Contraseña</label>
+            </div>
+
+            <div class="input-wrap">
+
+              <input id="passworcon" name="passwordcon" type="password" minlength="4" class="input-field" autocomplete="off" required />
+              <label for="passworcon">Confirmar contraseña</label>
+            </div>
+
+            <input id="submit" type="submit" value="Registrarse" class="sign-btn" />
+
+          </div>
+        </form>
+      </div>
+
+      <div class="carousel">
+        <!-- Carousel content here -->
+        <div class="images-wrapper">
+          <img src="/" class="image img-1 show" alt="" />
+          <img src="/" class="image img-2" alt="" />
+          <img src="/" class="image img-3" alt="" />
+        </div>
+
+        <div class="text-slider">
+          <div class="text-wrap">
+            <div class="text-group">
+              <h2>Mejoremos la permanencia</h2>
+              <h2>Juntos somos la fuerza</h2>
+              <h2>¡Somos stay!</h2>
+            </div>
+          </div>
+
+          <div class="bullets">
+            <span class="active" data-value="1"></span>
+            <span data-value="2"></span>
+            <span data-value="3"></span>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const submitButton = document.getElementById("submit");
+  submitButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Evita que el formulario se envíe automáticamente
+    const username = document.getElementById('username_').value;
+    const password = document.getElementById('password_').value;
+    const confirmPassword = document.getElementById('passworcon').value;
+    const email = document.getElementById('email_').value;
+
+    if (password === confirmPassword) {
+      const data = { username, email, password };
+      const jsonData = JSON.stringify(data);
+      fetch('/req/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: jsonData
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Registro exitoso');
+        } else {
+          alert('Error en el registro');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    } else {
+      alert('Las contraseñas no coinciden');
+    }
+  });
+</script>
+
+<script src="/App/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+:root{
+    --primary-color: #b38dff;
+    --secondary-color: #2c2342;
+    --third-color: #6e46bd;
+    --background-color: #362b54;
+    --text-color:#f2f2f2;
+}
+
+.seccion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 50px;
+}
+
+.seccion .btn{
+    border: none;
+    font-weight: 900;
+    margin-top: 20px;
+    width: 120px;
+    height:40px;
+    border-radius: 30px;
+    background-color:  var(--text-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+
+}
+
+.seccion .btn:hover{
+    background-color: var(--third-color);
+    color: var(--text-color);
+}
+
+.recom-text{
+    margin-top: 20px;
+}
+
+.recom-content{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.recom-content img{
+    margin: 10px 30px;
+    border-radius: 20px;
+    width: 200px;
+    height: 160px;
+}
+
+.recom-games{
+    display: flex;
+    flex-direction: row;
+}
+.recom-games img{
+    margin: 20px 30px;
+    border-radius: 20px;
+    width: 200px;
+}
+
+

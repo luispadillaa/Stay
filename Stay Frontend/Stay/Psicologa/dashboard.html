@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/z_Assets/dashboard.css">
+    <link rel="shortcut icon" href="/z_Images/circle-dark-logo.png" type="image/x-icon">
+
+    <title>Stay</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"> 
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="aside">
+            <ul>
+                <li><button onclick="showSeccion('dashboard')">Dashboard</button></li>
+                <li><button onclick="showSeccion('students')">Estudiantes</button></li>
+                <li><button onclick="showSeccion('permanence')">Permanencia</button></li>
+                <li><button onclick="showSeccion('alerts')">Alertas</button></li>
+              </ul>
+        </div>
+
+        <!-- SECCIÓN DE DASHBOARD-->
+        <main id="dashboard" class="seccion active">
+            <h1>Estadisticas</h1>
+
+        </main>
+
+
+
+         <!--SECCIÓN DE ESTUDIANTES -->
+        <div id="students" class="seccion">
+
+            <div class="table-student">
+                <div class="search"> 
+                    <input type="search">
+                </div>
+            </div>
+            
+            <div class="table-data">
+                
+            </div>
+        </div>
+        
+         <!-- SECCIÓN DE PERMANENCIA-->
+        <div id="permanence" class="seccion">
+            <h1>nose</h1>
+
+        </div>
+
+
+         <!-- SECCIÓN DE ALERTAS-->
+        <div id="alerts" class="seccion">
+            <h1>jum</h1>
+
+        </div>
+
+    </div>
+    
+    <script src="/Psicologa/dashboard.js"></script>
+</body>
+</html>
+    
